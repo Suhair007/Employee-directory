@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employee Directory Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/main/resources/static/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="header" style="flex-direction: row; align-items: center; gap: 20px;">
+      <h1 style="margin: 0 20px 0 0;">Employee Directory</h1>
+      <div class="search-filter" style="margin: 0;">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search by name or email"
+        />
+        <button id="filter-btn">Filter</button>
+      </div>
+    </div>
+    </div>
+    <div class="controls" style="display: flex; align-items: center; gap: 20px; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <label>
+          Sort:
+          <select id="sort-select">
+            <option value="">--Select--</option>
+            <option value="name">Name</option>
+            <option value="department">Department</option>
+          </select>
+        </label>
+        <label>
+          Show:
+          <select id="show-select">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
+      <button id="add-employee-btn" class="add-btn">Add Employee</button>
+    </div>
+    <div id="employee-list-container"></div>
+    
+    <!-- Filter Sidebar -->
+    <div class="overlay" id="filter-overlay"></div>
+    <div class="filter-sidebar" id="filter-sidebar">
+      <div class="filter-header">
+        <h3>Filter Employees</h3>
+        <button class="close-filter" id="close-filter">&times;</button>
+      </div>
+      
+      <div class="filter-section">
+        <h4>Name</h4>
+        <input 
+          type="text" 
+          id="filter-name" 
+          class="filter-input" 
+          placeholder="Filter by name..."
+        />
+      </div>
+      
+      <div class="filter-section">
+        <h4>Department</h4>
+        <input 
+          type="text" 
+          id="filter-department" 
+          class="filter-input" 
+          placeholder="Filter by department..."
+        />
+      </div>
+      
+      <div class="filter-section">
+        <h4>Role</h4>
+        <input 
+          type="text" 
+          id="filter-role" 
+          class="filter-input" 
+          placeholder="Filter by role..."
+        />
+      </div>
+      
+      <div class="filter-actions">
+        <button class="filter-btn apply-filter" id="apply-filters">Apply Filters</button>
+        <button class="filter-btn clear-filter" id="clear-filters">Clear All</button>
+      </div>
+    </div>
+    
+    <div id="employee-form-modal" class="modal hidden">
+      <form id="employee-form">
+        <h2 id="form-title">Add/Edit Employee</h2>
+        <input type="hidden" id="employee-id" />
+        <label
+          >First Name: <input type="text" id="first-name" required
+        /></label>
+        <label>Last Name: <input type="text" id="last-name" required /></label>
+        <label>Email: <input type="email" id="email" required /></label>
+        <label
+          >Department: <input type="text" id="department" required
+        /></label>
+        <label>Role: <input type="text" id="role" required /></label>
+        <div class="form-actions">
+          <button type="submit" id="save-btn">Save</button>
+          <button type="button" id="cancel-btn">Cancel</button>
+        </div>
+        <div id="form-errors"></div>
+      </form>
+    </div>
+    
+    <!-- Pagination Controls -->
+    <div class="pagination-container" id="pagination-container">
+      <div class="pagination-info">
+        <span id="pagination-info">Showing 0 of 0 employees</span>
+      </div>
+      <div class="pagination-controls">
+        <button id="prev-page" class="pagination-btn" disabled>Previous</button>
+        <span id="page-numbers" class="page-numbers"></span>
+        <button id="next-page" class="pagination-btn" disabled>Next</button>
+      </div>
+    </div>
+    
+    <footer>
+      <p>© 2025 Employee Directory App. All rights reserved.</p>
+    </footer>
+    <script src="/src/main/resources/static/js/app.js"></script>
+  </body>
+</html>
